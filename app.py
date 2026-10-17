@@ -195,18 +195,26 @@ if chart_type == "추세선 분석":
 
     fig = go.Figure()
 
-   fig.add_trace(
-    go.Scatter(
-        x=yearly["연도"],
-        y=yearly["5년 이동평균"],
-        mode="lines",
-        name="5년 이동평균",
-        line=dict(color="red", dash="dash", width=3),
-        hovertemplate="%{x}년<br>5년 이동평균 %{y:.2f} °C<extra></extra>",
+    fig.add_trace(
+        go.Scatter(
+            x=yearly["연도"],
+            y=yearly["평균기온"],
+            mode="lines",
+            name="연도별 평균기온",
+            hovertemplate="%{x}년<br>평균기온 %{y:.2f} °C<extra></extra>",
+        )
     )
-)
 
-
+    fig.add_trace(
+        go.Scatter(
+            x=yearly["연도"],
+            y=yearly["5년 이동평균"],
+            mode="lines",
+            name="5년 이동평균",
+            line=dict(color="red", dash="dash", width=3),
+            hovertemplate="%{x}년<br>5년 이동평균 %{y:.2f} °C<extra></extra>",
+        )
+    )
 
     fig.update_layout(
         xaxis_title="연도",
@@ -214,6 +222,8 @@ if chart_type == "추세선 분석":
         hovermode="x unified",
         legend_title="범례",
     )
+
+    st.plotly_chart(fig, use_container_width=True)
 
     st.plotly_chart(fig, use_container_width=True)
 
