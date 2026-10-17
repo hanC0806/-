@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="서울 기후 분석 대시보드",
     page_icon="🌦️",
     layout="wide",
-)
+
 
 # 제목
 st.title("🌦️ 서울 기후 분석 대시보드")
